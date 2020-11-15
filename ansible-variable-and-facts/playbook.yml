@@ -1,0 +1,13 @@
+---
+- hosts: localhost
+  tasks:
+   - name: "打印ansible_facts变量"
+     debug:
+      var: ansible_facts
+   - name: "打印ansible_facts.ansible_distribution变量"
+     debug:
+      msg: "{{ ansible_distribution }}"
+   - name: "使用ansible_facts变量判断操作系统类型"
+     debug:
+      msg: "此操作系统为centOS8"
+     when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
